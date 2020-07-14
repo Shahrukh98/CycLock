@@ -33,7 +33,7 @@ local.properties
 # node.js
 #
 node_modules/
-android/app
+android/app/build
 android/*.hprof
 npm-debug.log
 yarn-error.log

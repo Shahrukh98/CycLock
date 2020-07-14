@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "869685444457",
+    "firebase_url": "https://cyclock-58bd4.firebaseio.com",
+    "project_id": "cyclock-58bd4",
+    "storage_bucket": "cyclock-58bd4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869685444457:android:3bf38afa3289e2771f07f8",
+        "android_client_info": {
+          "package_name": "com.cyclock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "869685444457-s99jo9v43g5qbeap47pp6jf0qrt3v5s6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDguT2mmjEDCKvgasaEjVmNxlIjq_NxOyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "869685444457-s99jo9v43g5qbeap47pp6jf0qrt3v5s6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
