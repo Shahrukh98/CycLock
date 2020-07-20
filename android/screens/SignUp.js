@@ -3,13 +3,12 @@ import { AuthContext } from "../routes/AuthProvider";
 import { View, Text, Button, TextInput } from "react-native";
 import { styles } from "../styles//styles";
 import LinearGradient from "react-native-linear-gradient";
-import firestore from "@react-native-firebase/firestore";
 
 export default function SignUp({ navigation }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { userName, setUserName, register } = useContext(AuthContext);
+  const { setUserName, register } = useContext(AuthContext);
   return (
     <LinearGradient colors={["#c53364", "#5b247a"]} style={styles.container}>
       <TextInput
@@ -41,10 +40,9 @@ export default function SignUp({ navigation }) {
           style={styles.button}
           title="Sign Up !"
           onPress={() => {
+            setUserName(name);
             try {
               register(email, password);
-              setUserName(name);
-              console.log(usrName);
             } catch (e) {
               console.log(e);
             }

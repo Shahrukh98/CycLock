@@ -7,7 +7,7 @@ import { AuthContext } from "./AuthProvider";
 import Loading from "../screens/Loading";
 
 export default function Routes() {
-  const { user, setUser } = useContext(AuthContext);
+  const { user, setUser, setScanned } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const [initializing, setInitializing] = useState(true);
   // Handle user state changes
@@ -18,6 +18,7 @@ export default function Routes() {
   }
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    setScanned(null);
     return subscriber; // unsubscribe on unmount
   }, []);
   if (loading) {

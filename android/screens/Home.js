@@ -1,19 +1,69 @@
 import React, { useState, useContext, useEffect } from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, TouchableOpacity } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { AuthContext } from "../routes/AuthProvider";
 import { styles } from "../styles/styles";
 import Loading from "./Loading";
 import firestore from "@react-native-firebase/firestore";
 export default function Home({ navigation }) {
-  const { user, userData, userName, setUserData, logout } = useContext(
-    AuthContext
-  );
+  const {
+    user,
+    userData,
+    userName,
+    setUserName,
+    userBalance,
+    btStatus,
+    isPending,
+    setBluetooth,
+    setScanned,
+    setUserBalance,
+    setUserData,
+    logout,
+  } = useContext(AuthContext);
 
   async function dataRead() {
     try {
-      const x = await firestore().collection("Users").doc(user.uid).get();
-      setData(x);
+      const userRetrieve = await firestore()
+        .collection("Users")
+        .doc(user.uid)
+        .get();
+      if (userRetrieve._data === undefined) {
+        await firestore()
+          .collection("Users")
+          .doc(user.uid)
+          .set({ name: userName, balance: 50 });
+        const ReUserRetrieve = await firestore()
+          .collection("Users")
+          .doc(user.uid)
+          .get();
+        setUserData(ReUserRetrieve);
+
+        setUserBalance(ReUserRetrieve._data.balance);
+        setUserName(ReUserRetrieve._data.name);
+      } else {
+        setUserData(userRetrieve);
+        setUserBalance(userRetrieve._data.balance);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  async function dataWrite() {
+    try {
+      const userRetrieve = await firestore()
+        .collection("Users")
+        .doc(user.uid)
+        .get();
+      console.log(userRetrieve._data.balance);
+      if (userRetrieve._data.balance > 49) {
+        await firestore()
+          .collection("Users")
+          .doc(user.uid)
+          .update({ balance: userRetrieve._data.balance - 50 });
+        navigation.navigate("btScreen");
+      } else {
+        console.log("Not enough balance!");
+      }
     } catch (e) {
       console.log(e);
     }
@@ -21,39 +71,36 @@ export default function Home({ navigation }) {
 
   useEffect(() => {
     dataRead();
-    if (data === null) {
-      firestore()
-        .collection("Users")
-        .doc(user.uid)
-        .set({ name: userName, balance: 50 });
-    } else {
-      setUserData(data);
-    }
-    console.log(userName);
   }, []);
 
   return (
     <LinearGradient colors={["#c53364", "#5b247a"]} style={styles.container}>
       {userData ? (
         <View>
-          <Text style={styles.text}>Welcome user {userName}</Text>
-          <Text style={styles.text}>
-            Your current balance is {userData.balance}
+          <Text style={styles.welcome}>Welcome {userData._data.name}</Text>
+          <Text style={styles.welcome}>
+            Your current balance is {userData._data.balance}
           </Text>
-          <Button
-            title="Scan the QR Code !"
-            style={styles.button}
+
+          <TouchableOpacity
+            style={styles.newbutton}
             onPress={() => {
-              navigation.navigate("qrScanning");
+              dataWrite();
             }}
-          />
-          <Button
-            title="Manually Enter Device ID !"
-            style={styles.button}
-            onPress={() => {
-              navigation.navigate("idEnter");
-            }}
-          />
+          >
+            <Text
+              style={{
+                fontSize: 35,
+                color: "#fff",
+                fontWeight: "bold",
+                alignSelf: "center",
+                textTransform: "uppercase",
+              }}
+            >
+              Pay and Go !
+            </Text>
+          </TouchableOpacity>
+
           <Button title="Logout" onPress={() => logout()} />
         </View>
       ) : (
