@@ -1,5 +1,5 @@
 import React from "react";
-import Providers from "./android/routes";
+import Providers from "./src/routes";
 export default function App() {
   return <Providers />;
 }

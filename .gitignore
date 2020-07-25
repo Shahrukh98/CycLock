@@ -20,7 +20,6 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-project.xcworkspace
 
 # Android/IntelliJ
 #
@@ -33,8 +32,6 @@ local.properties
 # node.js
 #
 node_modules/
-android/app/build
-android/*.hprof
 npm-debug.log
 yarn-error.log
 
@@ -42,6 +39,7 @@ yarn-error.log
 buck-out/
 \.buckd/
 *.keystore
+!debug.keystore
 
 # fastlane
 #
@@ -54,15 +52,14 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 
-# Bundle artifacts
+# Bundle artifact
 *.jsbundle
 
 # CocoaPods
-/ios/Pods/
-
-# Expo
-.expo/*
-web-build/
+ios/
 
 package-lock.json
 yarn.lock
+
+android/build
+android/app/build

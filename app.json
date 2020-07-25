@@ -1,17 +1,4 @@
 {
-  "name": "CycLock",
-  "displayName": "CycLock",
-  "expo": {
-    "name": "CycLock",
-    "slug": "expo-template-bare",
-    "version": "1.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  }
+  "name": "Cyclock",
+  "displayName": "Cyclock"
 }
