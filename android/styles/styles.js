@@ -9,6 +9,15 @@ export const styles = StyleSheet.create({
     paddingLeft: 60,
     paddingRight: 60,
   },
+  container3: {
+    flex: 1,
+    paddingTop: 30,
+    paddingLeft: 30,
+    paddingRight: 30,
+  },
+  scrollView: {
+    backgroundColor: "white",
+  },
   loading: {
     flex: 1,
     justifyContent: "center",
@@ -22,19 +31,15 @@ export const styles = StyleSheet.create({
   },
   centerText: {
     flex: 1,
+    alignSelf: "stretch",
     fontSize: 18,
     padding: 32,
-    color: "#777",
-  },
-  textBold: {
     fontWeight: "500",
-    color: "#000",
+    color: "#fff",
   },
   buttonText: {
     fontSize: 50,
-    fontFamily: "Roboto",
-    padding: 25,
-    borderColor: "black",
+    alignSelf: "center",
   },
   buttonTouchable: {
     padding: 16,
@@ -65,11 +70,12 @@ export const styles = StyleSheet.create({
     height: 40,
     borderBottomColor: "#f8f8f8",
   },
-  button: {
+  newbutton: {
+    fontSize: 50,
+    color: "#fff",
+    fontWeight: "bold",
     alignSelf: "stretch",
-    padding: 40,
-    backgroundColor: "#59cbbd",
-    marginTop: 30,
+    textTransform: "uppercase",
   },
 
   button2: {
@@ -103,5 +109,37 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  view: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  containor: {
+    flex: 1,
+    backgroundColor: "#F5FCFF",
+  },
+  toolbar: {
+    paddingTop: 10,
+    paddingBottom: 10,
+    flexDirection: "row",
+  },
+  toolbarButton: {
+    width: 50,
+    marginTop: 8,
+  },
+  toolbarTitle: {
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 20,
+    flex: 1,
+    marginTop: 6,
+  },
+  deviceName: {
+    fontSize: 17,
+    color: "black",
+  },
+  deviceNameWrap: {
+    margin: 10,
+    borderBottomWidth: 1,
   },
 });
